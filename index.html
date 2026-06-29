@@ -344,23 +344,13 @@ body {
       </div>
     </div>
 
-    <div class="sub-head">Prozessbedingungen</div>
+    <div class="sub-head">Prozessbedingungen & Rüst-Freigabeprozess</div>
     <div class="cp-row">
-      <div class="cp-label required">Eignung, Sauberkeit, Ergonomie, Lichtverhältnisse bewertet und ok?</div>
+      <div class="cp-label required">Eignung, Sauberkeit, Ergonomie, Lichtverhältnisse bewertet und ok; Arbeitsplatzfreigabe (Ordnung und Sauberkeit); Funktionsfreigabe</div>
       <div class="toggle-group" data-key="sauberkeit">
         <button class="toggle-btn" onclick="select(this,'io','sauberkeit')">✓ i.O.</button>
         <button class="toggle-btn" onclick="select(this,'bio','sauberkeit')">⚠ b.i.O.</button>
         <button class="toggle-btn" onclick="select(this,'nio','sauberkeit')">✗ n.i.O.</button>
-      </div>
-    </div>
-
-    <div class="sub-head">Rüst-Freigabeprozess</div>
-    <div class="cp-row">
-      <div class="cp-label required">Arbeitsplatzfreigabe wurde durchgeführt (Ordnung und Sauberkeit); Funktionsfreigabe</div>
-      <div class="toggle-group" data-key="arbeitsplatz">
-        <button class="toggle-btn" onclick="select(this,'io','arbeitsplatz')">✓ i.O.</button>
-        <button class="toggle-btn" onclick="select(this,'bio','arbeitsplatz')">⚠ b.i.O.</button>
-        <button class="toggle-btn" onclick="select(this,'nio','arbeitsplatz')">✗ n.i.O.</button>
       </div>
     </div>
 
@@ -453,7 +443,7 @@ const values = {};
 let pruefungsart = '';
 
 const KEYS = ['betriebsmittel','cabin1','cabin2','cabin3','cabin4','dryer1','dryer2',
-              'sauberkeit','arbeitsplatz','grtrockner','kab4trockner'];
+              'sauberkeit','grtrockner','kab4trockner'];
 const TOTAL = KEYS.length;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -531,7 +521,6 @@ async function submitForm() {
     Dryer2:              values.dryer2           || '',
     // Prozessbedingungen
     Sauberkeit:          values.sauberkeit       || '',
-    Arbeitsplatz:        values.arbeitsplatz     || '',
     // Trocknertemperatur
     Grtrockner_Status:   values.grtrockner       || '',
     Grtrockner_IST:      parseFloat(document.getElementById('f-grtrockner').value) || null,
