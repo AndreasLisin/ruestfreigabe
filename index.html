@@ -285,6 +285,10 @@ body {
         <span class="soll-badge">SOLL: +21°C ±5°C</span>
         <input type="number" class="ist-input" id="f-cabin1-temp" placeholder="IST °C">
       </div>
+      <div class="soll-ist-row">
+        <span class="soll-badge">SOLL: 0–10 Pa</span>
+        <input type="number" class="ist-input" id="f-cabin1-druck" placeholder="IST Pa">
+      </div>
       <div class="toggle-group" data-key="cabin1">
         <button class="toggle-btn" onclick="select(this,'io','cabin1')">✓ i.O.</button>
         <button class="toggle-btn" onclick="select(this,'bio','cabin1')">⚠ b.i.O.</button>
@@ -296,6 +300,10 @@ body {
       <div class="soll-ist-row">
         <span class="soll-badge">SOLL: +21°C ±5°C</span>
         <input type="number" class="ist-input" id="f-cabin2-temp" placeholder="IST °C">
+      </div>
+      <div class="soll-ist-row">
+        <span class="soll-badge">SOLL: 0–10 Pa</span>
+        <input type="number" class="ist-input" id="f-cabin2-druck" placeholder="IST Pa">
       </div>
       <div class="toggle-group" data-key="cabin2">
         <button class="toggle-btn" onclick="select(this,'io','cabin2')">✓ i.O.</button>
@@ -309,6 +317,10 @@ body {
         <span class="soll-badge">SOLL: +21°C ±5°C</span>
         <input type="number" class="ist-input" id="f-cabin3-temp" placeholder="IST °C">
       </div>
+      <div class="soll-ist-row">
+        <span class="soll-badge">SOLL: 0–10 Pa</span>
+        <input type="number" class="ist-input" id="f-cabin3-druck" placeholder="IST Pa">
+      </div>
       <div class="toggle-group" data-key="cabin3">
         <button class="toggle-btn" onclick="select(this,'io','cabin3')">✓ i.O.</button>
         <button class="toggle-btn" onclick="select(this,'bio','cabin3')">⚠ b.i.O.</button>
@@ -320,6 +332,10 @@ body {
       <div class="soll-ist-row">
         <span class="soll-badge">SOLL: +21°C ±5°C</span>
         <input type="number" class="ist-input" id="f-cabin4-temp" placeholder="IST °C">
+      </div>
+      <div class="soll-ist-row">
+        <span class="soll-badge">SOLL: 0–10 Pa</span>
+        <input type="number" class="ist-input" id="f-cabin4-druck" placeholder="IST Pa">
       </div>
       <div class="toggle-group" data-key="cabin4">
         <button class="toggle-btn" onclick="select(this,'io','cabin4')">✓ i.O.</button>
@@ -510,13 +526,17 @@ async function submitForm() {
     // Anlagenprüfung
     Betriebsmittel:      values.betriebsmittel  || '',
     Cabin1:              values.cabin1           || '',
-    Cabin1_IST:          parseFloat(document.getElementById('f-cabin1-temp').value) || null,
+    Cabin1_IST:          parseFloat(document.getElementById('f-cabin1-temp').value)  || null,
+    Cabin1_Druck:        parseFloat(document.getElementById('f-cabin1-druck').value) || null,
     Cabin2:              values.cabin2           || '',
-    Cabin2_IST:          parseFloat(document.getElementById('f-cabin2-temp').value) || null,
+    Cabin2_IST:          parseFloat(document.getElementById('f-cabin2-temp').value)  || null,
+    Cabin2_Druck:        parseFloat(document.getElementById('f-cabin2-druck').value) || null,
     Cabin3:              values.cabin3           || '',
-    Cabin3_IST:          parseFloat(document.getElementById('f-cabin3-temp').value) || null,
+    Cabin3_IST:          parseFloat(document.getElementById('f-cabin3-temp').value)  || null,
+    Cabin3_Druck:        parseFloat(document.getElementById('f-cabin3-druck').value) || null,
     Cabin4:              values.cabin4           || '',
-    Cabin4_IST:          parseFloat(document.getElementById('f-cabin4-temp').value) || null,
+    Cabin4_IST:          parseFloat(document.getElementById('f-cabin4-temp').value)  || null,
+    Cabin4_Druck:        parseFloat(document.getElementById('f-cabin4-druck').value) || null,
     Dryer1:              values.dryer1           || '',
     Dryer2:              values.dryer2           || '',
     // Prozessbedingungen
@@ -589,7 +609,9 @@ function resetForm() {
   document.getElementById('btn-wiederholpruef').textContent = '☐ Wiederholungsprüfung';
   document.getElementById('f-datum').value    = new Date().toISOString().split('T')[0];
   document.getElementById('f-pruefer').value  = '';
-  ['f-cabin1-temp','f-cabin2-temp','f-cabin3-temp','f-cabin4-temp','f-grtrockner','f-kab4','f-bemerkung']
+  ['f-cabin1-temp','f-cabin1-druck','f-cabin2-temp','f-cabin2-druck',
+   'f-cabin3-temp','f-cabin3-druck','f-cabin4-temp','f-cabin4-druck',
+   'f-grtrockner','f-kab4','f-bemerkung']
     .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   document.getElementById('nio-alert').style.display      = 'none';
   document.getElementById('form-screen').style.display    = 'block';
